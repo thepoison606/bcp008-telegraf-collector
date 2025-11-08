@@ -21,9 +21,10 @@ async function main() {
     let client: WebSocketClient | null = null;
     try {
         var deviceIs04Address = "127.0.0.1";
-        var deviceIs04Port = 3000;
-        var is04DeviceId = "67c25159-ce25-4000-a66c-f31fff890265";
+        var deviceIs04Port = 49999;
+        var is04DeviceId = "245a9071-394b-44f2-a5e3-32cb62db35b1";
         var is04Version = "v1.3";
+        var useDeviceIS04PortForWS = true;
 
         var is04Url = `http://${deviceIs04Address}:${deviceIs04Port}/x-nmos/node/${is04Version}/devices/${is04DeviceId}`;
 
@@ -38,6 +39,13 @@ async function main() {
         }
         console.log(`✅ Found WebSocket URL: ${websocketControl.href}`);
 
+        // Replace hostname if needed for Docker setups
+        const wsUrl = new URL(websocketControl.href);
+        if (useDeviceIS04PortForWS) {
+            wsUrl.hostname = deviceIs04Address;
+            console.log(`✅ Changed WebSocket URL to Device Adress: ${wsUrl.toString()}`);
+        }
+            
         // --- 2. Create client and set up event listener ---
         client = new WebSocketClient();
 
@@ -50,7 +58,7 @@ async function main() {
         });
 
         // --- 3. Connect to WebSocket href ---
-        await client.connect(websocketControl.href);
+        await client.connect(wsUrl.toString());
 
         // --- 4. Send commands ---
         console.log('\n📝 Get root user label');
