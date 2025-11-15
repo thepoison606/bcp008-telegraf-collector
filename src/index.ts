@@ -3,6 +3,7 @@
 import axios from 'axios';
 
 import { WebSocketClient } from './websocket';
+import { TelegrafWriter } from './telegrafWriter';
 
 import {
     QueryApiResponse,
@@ -30,6 +31,11 @@ async function main() {
 
         var ncpControlType = 'urn:x-nmos:control:ncp/v1.0';
 
+        const telegrafWriter = new TelegrafWriter("127.0.0.1", 8094);
+        await telegrafWriter.connect();
+        telegrafWriter.write(`health,host=Guenther value=42 ${Date.now()}000000`);
+
+
         // --- 1. Find IS-12 control endpoint ---
         console.log(`Fetching IS-04 device resource from: ${is04Url}`);
         const { data: apiResponse } = await axios.get<QueryApiResponse>(is04Url);
@@ -39,7 +45,7 @@ async function main() {
         }
         console.log(`✅ Found WebSocket URL: ${websocketControl.href}`);
 
-        // Replace hostname if needed for Docker setups
+        // Replace hostname (if needed for Docker setups)
         const wsUrl = new URL(websocketControl.href);
         if (useDeviceIS04PortForWS) {
             wsUrl.hostname = deviceIs04Address;
