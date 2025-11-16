@@ -33,7 +33,7 @@ async function main() {
 
         const telegrafWriter = new TelegrafWriter("127.0.0.1", 8094);
         await telegrafWriter.connect();
-        telegrafWriter.write(`health,host=Guenther value=42 ${Date.now()}000000`);
+        telegrafWriter.write(`health,host=Olli value=33 ${Date.now()}000000`);
 
 
         // --- 1. Find IS-12 control endpoint ---
@@ -57,7 +57,7 @@ async function main() {
 
         // Set up the listener for spontaneous notifications
         client.on('notification', (notification: WebSocketNotificationMsg) => {
-            console.log(`\t🔔 Notification received: ${JSON.stringify(notification)}`);
+            console.log(new Date().toString(), `\t🔔 Notification received: ${JSON.stringify(notification)}`);
             notification.notifications.forEach(n => {
                 console.log(`\t\t• Oid: ${n.oid}, PropertyId: ${n.eventData.propertyId.level}p${n.eventData.propertyId.index}, Value: ${n.eventData.value}, SequenceItemIndex: ${n.eventData.sequenceItemIndex}`);
             });

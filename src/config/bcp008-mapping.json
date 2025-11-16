@@ -1,0 +1,397 @@
+{
+  "receiver_monitor": {
+    "measurement": "receiver_monitor",
+    "tags": [
+      {
+        "key": "receiver_oid"
+      },
+      {
+        "key": "receiver_role"
+      },
+      {
+        "key": "receiver_label"
+      }
+    ],
+    "fields": [
+      {
+        "name": "overall_status",
+        "controlPath": {
+          "level": 3,
+          "index": 1
+        },
+        "type": "integer",
+        "enum": {
+          "0": "Inactive",
+          "1": "Healthy",
+          "2": "PartiallyHealthy",
+          "3": "Unhealthy"
+        }
+      },
+      {
+        "name": "overall_status_message",
+        "controlPath": {
+          "level": 3,
+          "index": 2
+        },
+        "type": "string"
+      },
+      {
+        "name": "status_reporting_delay",
+        "controlPath": {
+          "level": 3,
+          "index": 3
+        },
+        "type": "integer"
+      },
+      {
+        "name": "link_status",
+        "controlPath": {
+          "level": 4,
+          "index": 1
+        },
+        "type": "integer",
+        "enum": {
+          "1": "AllUp",
+          "2": "SomeDown",
+          "3": "AllDown"
+        }
+      },
+      {
+        "name": "link_status_message",
+        "controlPath": {
+          "level": 4,
+          "index": 2
+        },
+        "type": "string"
+      },
+      {
+        "name": "link_status_transition_counter",
+        "controlPath": {
+          "level": 4,
+          "index": 3
+        },
+        "type": "integer"
+      },
+      {
+        "name": "connection_status",
+        "controlPath": {
+          "level": 4,
+          "index": 4
+        },
+        "type": "integer",
+        "enum": {
+          "0": "Inactive",
+          "1": "Healthy",
+          "2": "PartiallyHealthy",
+          "3": "Unhealthy"
+        }
+      },
+      {
+        "name": "connection_status_message",
+        "controlPath": {
+          "level": 4,
+          "index": 5
+        },
+        "type": "string"
+      },
+      {
+        "name": "connection_status_transition_counter",
+        "controlPath": {
+          "level": 4,
+          "index": 6
+        },
+        "type": "integer"
+      },
+      {
+        "name": "external_sync_status",
+        "controlPath": {
+          "level": 4,
+          "index": 7
+        },
+        "type": "integer",
+        "enum": {
+          "0": "NotUsed",
+          "1": "Healthy",
+          "2": "PartiallyHealthy",
+          "3": "Unhealthy"
+        }
+      },
+      {
+        "name": "external_sync_status_message",
+        "controlPath": {
+          "level": 4,
+          "index": 8
+        },
+        "type": "string"
+      },
+      {
+        "name": "external_sync_status_transition_counter",
+        "controlPath": {
+          "level": 4,
+          "index": 9
+        },
+        "type": "integer"
+      },
+      {
+        "name": "synchronization_source_id",
+        "controlPath": {
+          "level": 4,
+          "index": 10
+        },
+        "type": "string"
+      },
+      {
+        "name": "stream_status",
+        "controlPath": {
+          "level": 4,
+          "index": 11
+        },
+        "type": "integer",
+        "enum": {
+          "0": "Inactive",
+          "1": "Healthy",
+          "2": "PartiallyHealthy",
+          "3": "Unhealthy"
+        }
+      },
+      {
+        "name": "stream_status_message",
+        "controlPath": {
+          "level": 4,
+          "index": 12
+        },
+        "type": "string"
+      },
+      {
+        "name": "stream_status_transition_counter",
+        "controlPath": {
+          "level": 4,
+          "index": 13
+        },
+        "type": "integer"
+      },
+      {
+        "name": "auto_reset_counters_and_messages",
+        "controlPath": {
+          "level": 4,
+          "index": 14
+        },
+        "type": "boolean"
+      }
+    ],
+    "methods": [
+      {
+        "name": "GetLostPacketCounters",
+        "elementId": "4m1",
+        "returnType": "NcMethodResultCounters"
+      },
+      {
+        "name": "GetLatePacketCounters",
+        "elementId": "4m2",
+        "returnType": "NcMethodResultCounters"
+      },
+      {
+        "name": "ResetCountersAndMessages",
+        "elementId": "4m3",
+        "returnType": "NcMethodResult"
+      }
+    ],
+    "controlClass": "1.2.2.1",
+    "name": "NcReceiverMonitor"
+  },
+  "sender_monitor": {
+    "controlClass": "1.2.2.2",
+    "name": "NcSenderMonitor",
+    "measurement": "sender_monitor",
+    "tags": [
+      {
+        "key": "sender_oid"
+      },
+      {
+        "key": "sender_role"
+      },
+      {
+        "key": "sender_label"
+      }
+    ],
+    "fields": [
+      {
+        "name": "overall_status",
+        "controlPath": {
+          "level": 3,
+          "index": 1
+        },
+        "type": "integer",
+        "enum": {
+          "0": "Inactive",
+          "1": "Healthy",
+          "2": "PartiallyHealthy",
+          "3": "Unhealthy"
+        }
+      },
+      {
+        "name": "overall_status_message",
+        "controlPath": {
+          "level": 3,
+          "index": 2
+        },
+        "type": "string"
+      },
+      {
+        "name": "status_reporting_delay",
+        "controlPath": {
+          "level": 3,
+          "index": 3
+        },
+        "type": "integer"
+      },
+      {
+        "name": "link_status",
+        "controlPath": {
+          "level": 4,
+          "index": 1
+        },
+        "type": "integer",
+        "enum": {
+          "1": "AllUp",
+          "2": "SomeDown",
+          "3": "AllDown"
+        }
+      },
+      {
+        "name": "link_status_message",
+        "controlPath": {
+          "level": 4,
+          "index": 2
+        },
+        "type": "string"
+      },
+      {
+        "name": "link_status_transition_counter",
+        "controlPath": {
+          "level": 4,
+          "index": 3
+        },
+        "type": "integer"
+      },
+      {
+        "name": "transmission_status",
+        "controlPath": {
+          "level": 4,
+          "index": 4
+        },
+        "type": "integer",
+        "enum": {
+          "0": "Inactive",
+          "1": "Healthy",
+          "2": "PartiallyHealthy",
+          "3": "Unhealthy"
+        }
+      },
+      {
+        "name": "transmission_status_message",
+        "controlPath": {
+          "level": 4,
+          "index": 5
+        },
+        "type": "string"
+      },
+      {
+        "name": "transmission_status_transition_counter",
+        "controlPath": {
+          "level": 4,
+          "index": 6
+        },
+        "type": "integer"
+      },
+      {
+        "name": "external_sync_status",
+        "controlPath": {
+          "level": 4,
+          "index": 7
+        },
+        "type": "integer",
+        "enum": {
+          "0": "NotUsed",
+          "1": "Healthy",
+          "2": "PartiallyHealthy",
+          "3": "Unhealthy"
+        }
+      },
+      {
+        "name": "external_sync_status_message",
+        "controlPath": {
+          "level": 4,
+          "index": 8
+        },
+        "type": "string"
+      },
+      {
+        "name": "external_sync_status_transition_counter",
+        "controlPath": {
+          "level": 4,
+          "index": 9
+        },
+        "type": "integer"
+      },
+      {
+        "name": "synchronization_source_id",
+        "controlPath": {
+          "level": 4,
+          "index": 10
+        },
+        "type": "string"
+      },
+      {
+        "name": "essence_status",
+        "controlPath": {
+          "level": 4,
+          "index": 11
+        },
+        "type": "integer",
+        "enum": {
+          "0": "Inactive",
+          "1": "Healthy",
+          "2": "PartiallyHealthy",
+          "3": "Unhealthy"
+        }
+      },
+      {
+        "name": "essence_status_message",
+        "controlPath": {
+          "level": 4,
+          "index": 12
+        },
+        "type": "string"
+      },
+      {
+        "name": "essence_status_transition_counter",
+        "controlPath": {
+          "level": 4,
+          "index": 13
+        },
+        "type": "integer"
+      },
+      {
+        "name": "auto_reset_counters_and_messages",
+        "controlPath": {
+          "level": 4,
+          "index": 14
+        },
+        "type": "boolean"
+      }
+    ],
+    "methods": [
+      {
+        "name": "GetTransmissionErrorCounters",
+        "elementId": "4m1",
+        "returnType": "NcMethodResultCounters"
+      },
+      {
+        "name": "ResetCountersAndMessages",
+        "elementId": "4m2",
+        "returnType": "NcMethodResult"
+      }
+    ]
+  }
+}
