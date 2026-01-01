@@ -11,6 +11,9 @@ export interface QueryApiResponse {
     label: string;
     description: string;
     controls: Control[];
+    node_id?: string;
+    receivers?: string[];
+    senders?: string[];
 }
 
 export interface NcElementId {
@@ -99,6 +102,25 @@ export interface WebSocketNotificationMsg {
     messageType: number;
     notifications: Notification[];
 }
+
+export interface MappingField {
+    name: string;
+    propertyId: {
+        level: number;
+        index: number;
+    };
+    type: 'integer' | 'string' | 'boolean';
+    enum?: Record<string, string>;
+}
+
+export interface MappingEntry {
+    table: string;
+    fields: MappingField[];
+}
+
+export type MonitorType = 'receiver_monitor' | 'sender_monitor';
+
+export type BCP008Mapping = Record<MonitorType, MappingEntry>;
 
 export interface WebSocketSubscriptionsMsg {
     messageType: number;

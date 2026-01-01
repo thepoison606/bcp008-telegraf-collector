@@ -13,6 +13,7 @@ export class TelegrafWriter {
         }
 
         this.socket = new Socket();
+        this.socket.setKeepAlive(true, 10_000);
         return new Promise((resolve, reject) => {
             this.socket?.once('connect', () => {
             console.log(`Connected to Telegraf at ${this.host}:${this.port}`);
@@ -25,7 +26,7 @@ export class TelegrafWriter {
 
     public write(lineProtocol: string): void {
         if (!this.socket || this.socket.destroyed) {
-            console.error('Telegraf socket not connected. Call connect() first.');
+            console.error('Telegraf socket not connected.');
             return;
         }
         this.socket.write(`${lineProtocol}\n`);
